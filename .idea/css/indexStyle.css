@@ -10,8 +10,7 @@
 
 body{
     background-color: dimgrey;
-    font-style: oblique;
-    font-size: 25px;
+    font-size: 20px;
 }
 h1{
     color: silver;
@@ -28,4 +27,19 @@ input{
     justify-content: center;
     justify-content: space-evenly;
     padding: 20px;
+}
+.table{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+select{
+    width: 100px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: grey;
+    color: white;
+}
+.label{
+    color: white;
 }
