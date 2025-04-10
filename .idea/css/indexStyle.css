@@ -3,13 +3,13 @@
     height: 200px;
     align-items: center;
     justify-content: center;
-    background-color: grey;
+    background-color: dimgray;
     font-size: 28px;
 
 }
 
 body{
-    background-color: dimgrey;
+    background-color: black;
     font-size: 20px;
 }
 h1{
