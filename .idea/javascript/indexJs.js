@@ -7,7 +7,9 @@ formbody.addEventListener('submit', async function(event) {
 
 
     const formdata = new FormData(formbody);
+    console.log(formdata)
     const newdata = Object.fromEntries(formdata)
+    console.log(newdata)
     const url = this.action;
 
 
@@ -36,21 +38,23 @@ singlebody.addEventListener('submit', async function(event) {
     event.preventDefault()
 
 
-    const formdata = new FormData(formbody);
+    const formdata = new FormData(singlebody);
+    console.log(formdata)
     const newdata = Object.fromEntries(formdata)
     const url = this.action;
 
-
+    console.log(newdata)
     try {
         const response = await fetch(url, {
             method: this.method,
             body: JSON.stringify(newdata)
         })
-
+        console.log(response)
         if(response.ok){
             const result = response.json();
             console.log("Succes")
             await displayGames(result)
+            console.log(result)
         }
         else{
             throw new Error(`HTTP error! status: ${response.status}`)
@@ -97,3 +101,4 @@ async function displayGames(gameinfo){
         </div>`;
     });
 }
+
