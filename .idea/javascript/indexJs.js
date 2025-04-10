@@ -1,7 +1,5 @@
-const yes = yes;
-
 document.addEventListener("DOMContentLoaded",() =>{
-    fetch("/api/recomendations")
+    fetch("http://localhost:8080/mistralChoice")
         .then(res => res.json())
         .then(data => displayGames(data))
         .catch(err => console.error("Error fetching games:", err));
@@ -21,7 +19,7 @@ function displayGames(games){
 
         td.innerHTML = `
             <div class ="game-wrapper">
-            <img src=${game.picture}" alt=${game.name}">
+            <img src="${game.picture}" alt="${game.name}">
             <div class="hover-info">
             <h3>${game.name}</h3>
             <p>${game.description}</p>
