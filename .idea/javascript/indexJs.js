@@ -20,7 +20,7 @@ formbody.addEventListener('submit', async function(event) {
         })
 
         if(response.ok){
-            const result = response.json();
+            const result = await response.json();
             console.log("Succes")
             await displayGames(result)
         }
@@ -51,7 +51,7 @@ singlebody.addEventListener('submit', async function(event) {
         })
         console.log(response)
         if(response.ok){
-            const result = response.json();
+            const result = await response.json();
             console.log("Succes")
             await displayGames(result)
             console.log(result)
@@ -75,14 +75,22 @@ singlebody.addEventListener('submit', async function(event) {
 });*/
 
 async function displayGames(gameinfo){
-    console.log(gameinfo)
-    const tableCells = document.querySelectorAll("td.game-cell")
+    try {
+        console.log(gameinfo)
+        const tableCells = document.querySelectorAll("td.game-cell")
 
-    let games = await gameinfo;
+        let games = await gameinfo;
 
 
-    games.forEach((game, index) => {
-        if (index >= tableCells.length) return;
+        if(!games || games.length === 0){
+            tableCells.forEach(td =>{
+                td.innerHTML = `<p class="no-games">No Games Found. PLEASE TRY AGAIN!!!!.</p>`
+            })
+            return
+        }
+
+        games.forEach((game, index) => {
+            if (index >= tableCells.length) return;
 
         let x = 0;
         if(games.length <= 1){
@@ -107,7 +115,15 @@ async function displayGames(gameinfo){
             <p>${game.description}</p>
         </div>
         </div>`;
-    });
+        });
+
+    } catch (error) {
+        console.error("error displaying games:", error)
+        const tableCells = document.querySelectorAll("td.game-cell")
+        tableCells.forEach(td=>{
+            td.innerHTML = `<p class="error-message">An Error Occured. PLEASE TRY AGAIN LATER!!!</p>`
+        })
+    }
 }
 
 
