@@ -20,7 +20,7 @@ formbody.addEventListener('submit', async function(event) {
         })
 
         if(response.ok){
-            const result = response.json();
+            const result = await response.json();
             console.log("Succes")
             await displayGames(result)
         }
@@ -51,7 +51,7 @@ singlebody.addEventListener('submit', async function(event) {
         })
         console.log(response)
         if(response.ok){
-            const result = response.json();
+            const result = await response.json();
             console.log("Succes")
             await displayGames(result)
             console.log(result)
@@ -82,8 +82,6 @@ async function displayGames(gameinfo){
         let games = await gameinfo;
 
 
-    games.forEach((game, index) => {
-        if (index >= tableCells.length) return;
         if(!games || games.length === 0){
             tableCells.forEach(td =>{
                 td.innerHTML = `<p class="no-games">No Games Found. PLEASE TRY AGAIN!!!!.</p>`
@@ -94,10 +92,6 @@ async function displayGames(gameinfo){
         games.forEach((game, index) => {
             if (index >= tableCells.length) return;
 
-            const td = tableCells[index]
-            const dealsHTML = Object.entries(game.dealList || {})
-                .map(([store, price]) => `<p>${store}: ${price}</p>`)
-                .join("")
         let x = 0;
         if(games.length <= 1){
             x = 1
@@ -122,6 +116,7 @@ async function displayGames(gameinfo){
         </div>
         </div>`;
         });
+
     } catch (error) {
         console.error("error displaying games:", error)
         const tableCells = document.querySelectorAll("td.game-cell")
