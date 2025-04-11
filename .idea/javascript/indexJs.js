@@ -77,7 +77,7 @@ async function displayGames(gameinfo){
 
         let games = await gameinfo;
 
-        if(!games || games.legnth === 0){
+        if(!games || games.length === 0){
             tableCells.forEach(td =>{
                 td.innerHTML = `<p class="no-games">No Games Found. PLEASE TRY AGAIN!!!!.</p>`
             })
