@@ -71,20 +71,28 @@ singlebody.addEventListener('submit', async function(event) {
 });*/
 
 async function displayGames(gameinfo){
-    console.log(gameinfo)
-    const tableCells = document.querySelectorAll("td.game-cell")
+    try {
+        console.log(gameinfo)
+        const tableCells = document.querySelectorAll("td.game-cell")
 
-    let games = await gameinfo;
+        let games = await gameinfo;
 
-    games.forEach((game, index) => {
-        if (index >= tableCells.length) return;
+        if(!games || games.legnth === 0){
+            tableCells.forEach(td =>{
+                td.innerHTML = `<p class="no-games">No Games Found. PLEASE TRY AGAIN!!!!.</p>`
+            })
+            return
+        }
 
-        const td = tableCells[index]
-        const dealsHTML = Object.entries(game.dealList || {})
-            .map(([store,price])=> `<p>${store}: ${price}</p>`)
-            .join("")
+        games.forEach((game, index) => {
+            if (index >= tableCells.length) return;
 
-        td.innerHTML = `
+            const td = tableCells[index]
+            const dealsHTML = Object.entries(game.dealList || {})
+                .map(([store, price]) => `<p>${store}: ${price}</p>`)
+                .join("")
+
+            td.innerHTML = `
             <div class ="game-wrapper">
             <img src="${game.picture}" alt="${game.name}">
             <div class="hover-info">
@@ -95,5 +103,13 @@ async function displayGames(gameinfo){
             <p>${game.description}</p>
         </div>
         </div>`;
-    });
+        });
+    } catch (error) {
+        console.error("error displaying games:", error)
+        const tableCells = document.querySelectorAll("td.game-cell")
+        tableCells.forEach(td=>{
+            td.innerHTML = `<p class="error-message">An Error Occured. PLEASE TRY AGAIN LATER!!!</p>`
+        })
+    }
 }
+
