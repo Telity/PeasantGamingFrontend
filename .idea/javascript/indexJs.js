@@ -1,11 +1,12 @@
-document.addEventListener("DOMContentLoaded",() =>{
-    fetch("http://localhost:8080/mistralChoice")
-        .then(res => res.json())
-        .then(data => displayGames(data))
-        .catch(err => console.error("Error fetching games:", err));
-});
+// document.addEventListener("DOMContentLoaded",() =>{
+//     fetch("http://localhost:8080/mistralChoice")
+//         .then(res => res.json())
+//         .then(data => displayGames(data))
+//         .catch(err => console.error("Error fetching games:", err));
+// });
 
-function displayGames(games){
+
+ export function displayGames(games){
 
     const tableCells = document.querySelectorAll("td.game-cell")
 

@@ -14,14 +14,17 @@
     <input type="search" placeholder=" search game..." id="gameInp">
     <input type="text" placeholder="Bonjour mon ami, Le chat is here for you.." id="aiInp">
 </div>
-<div>
+<div class="select">
+    <form action="http://localhost:8080/mistralChoice" method="post" id="formId">
     <label class="label">Order by:</label>
-    <select name="platform">
+    <select name="platform" id="dropDPlatforms">
     <option value="" disabled selected>platforms</option>
     </select>
-    <select name="genre">
+    <select name="genre" id="dropDGenre">
         <option value="" disabled selected>genres</option>
     </select>
+        <button type="submit" class="submitForm">submit</button>
+    </form>
 </div>
 <div>
     <table class="table" id="gameTable">
@@ -38,6 +41,7 @@
         </tr>
     </table>
 </div>
-<script src="../javascript/indexJs.js" defer></script>
+<script src="../javascript/indexJs.js" type="module"></script>
+<script src="../javascript/orderBy.js" type="module"></script>
 </body>
 </html>
