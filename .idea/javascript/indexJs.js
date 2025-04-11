@@ -5,7 +5,7 @@ const singlebody = document.getElementById("singleGame");
 formbody.addEventListener('submit', async function(event) {
     event.preventDefault()
 
-
+    resetGameCells()
     const formdata = new FormData(formbody);
     console.log(formdata)
     const newdata = Object.fromEntries(formdata)
@@ -37,7 +37,7 @@ formbody.addEventListener('submit', async function(event) {
 singlebody.addEventListener('submit', async function(event) {
     event.preventDefault()
 
-
+    resetGameCells()
     const formdata = new FormData(singlebody);
     console.log(formdata)
     const newdata = Object.fromEntries(formdata)
@@ -80,10 +80,16 @@ async function displayGames(gameinfo){
 
     let games = await gameinfo;
 
+
     games.forEach((game, index) => {
         if (index >= tableCells.length) return;
 
-        const td = tableCells[index]
+        let x = 0;
+        if(games.length <= 1){
+            x = 1
+        }
+        const td = tableCells[index + x]
+
         const dealsHTML = Object.entries(game.dealList || {})
             .map(([store,price])=> `<p>${store}: ${price}</p>`)
             .join("")
@@ -102,3 +108,10 @@ async function displayGames(gameinfo){
     });
 }
 
+
+function resetGameCells() {
+    const cells = document.querySelectorAll(".game-cell");
+    cells.forEach(cell => {
+        cell.innerHTML = '';
+    });
+}
