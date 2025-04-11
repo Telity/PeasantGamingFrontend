@@ -1,15 +1,108 @@
-.upperSection{
-    display: flex;
+
+/* Add this to your CSS file */
+.upperSection {
+    position: relative;
+    overflow: hidden;
     height: 200px;
+    background-color: #111;
+    display: flex;
     align-items: center;
     justify-content: center;
-    background-color: grey;
-    font-size: 28px;
+}
 
+.header {
+    position: relative;
+    z-index: 10;
+    color: silver;
+    text-shadow: 0 0 8px #4ff, 2px 2px 4px #000;
+}
+
+.pixel-world {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.blob {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #5f5;
+    border-radius: 50%;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    box-shadow: 0 0 10px #5f5;
+}
+
+.tree {
+    position: absolute;
+    bottom: 20px;
+    z-index: 2;
+}
+
+.tree-trunk {
+    width: 12px;
+    height: 30px;
+    background-color: #964B00;
+    margin: 0 auto;
+}
+
+.tree-top {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #0a5;
+    margin-bottom: 5px;
+}
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    background-color: #3a3;
+    z-index: 2;
+}
+
+.cloud {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.star {
+    position: absolute;
+    background-color: #fff;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    box-shadow: 0 0 3px #fff;
+    z-index: 1;
+}
+
+.mountain {
+    position: absolute;
+    bottom: 20px;
+    z-index: 1;
+}
+
+.mountain-shape {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 60px solid #555;
 }
 
 body{
-    background-color: dimgrey;
+    background-color: black;
     font-size: 20px;
 }
 h1{
@@ -46,7 +139,7 @@ select{
 .game-cell {
     padding: 10px;
     position: relative;
-    width: 200px;
+    width: 500px;
     height: 300px;
 }
 

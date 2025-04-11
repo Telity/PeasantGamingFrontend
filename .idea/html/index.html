@@ -11,8 +11,19 @@
     <h1 class="header">Peasent Gaming inc.</h1>
 </div>
 <div class="input">
-    <input type="search" placeholder=" search game..." id="gameInp">
-    <input type="text" placeholder="Bonjour mon ami, Le chat is here for you.." id="aiInp">
+    <form id="singleGame" action="http://localhost:8080/singleGame" method="post" >
+        <label class="gamer-label gamer-label-primary" style="color: white"> Enter title for game deals</label>
+        <input type="text" name="game" placeholder=" search game..." id="gameInp">
+        <br>
+        <button type="submit" value="Submit">Search</button>
+    </form>
+
+    <form id="gameSearch" action="http://localhost:8080/mistralChoice" method="post" >
+        <label class="gamer-label gamer-label-primary" style="color: white"> Enter title for similar games</label>
+    <input type="text" name="game" placeholder="Bonjour mon ami, Le chat is here for you.." id="aiInp">
+        <br>
+        <button type="submit" value="Submit">Search</button>
+    </form>
 </div>
 <div class="select">
     <form action="http://localhost:8080/mistralChoice" method="post" id="formId">
