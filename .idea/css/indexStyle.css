@@ -178,4 +178,10 @@ select{
 .game-wrapper:hover .hover-info {
     opacity: 1;
 }
-
+.submitForm{
+    width: 55px;
+    height: 19px;
+    border-radius: 5px;
+    border: 3px darkslategrey;
+    font-size: 15px;
+}

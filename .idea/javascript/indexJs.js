@@ -74,7 +74,8 @@ singlebody.addEventListener('submit', async function(event) {
         .catch(err => console.error("Error fetching games:", err));
 });*/
 
-async function displayGames(gameinfo){
+
+export async function displayGames(gameinfo){
     try {
         console.log(gameinfo)
         const tableCells = document.querySelectorAll("td.game-cell")
@@ -125,6 +126,8 @@ async function displayGames(gameinfo){
         })
     }
 }
+//bullshit
+
 
 
 function resetGameCells() {
